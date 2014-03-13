@@ -5,3 +5,4 @@
 (depends-on "ag")
 (depends-on "js2-mode")
 (depends-on "magit")
+(depends-on "markdown-mode")
