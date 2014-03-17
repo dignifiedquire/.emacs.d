@@ -6,3 +6,5 @@
 (depends-on "js2-mode")
 (depends-on "magit")
 (depends-on "markdown-mode")
+(depends-on "less-css-mode")
+(depends-on "yaml-mode")
