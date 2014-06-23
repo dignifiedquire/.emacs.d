@@ -2,3 +2,4 @@ elpa
 .cask
 auto-save-list
 .emacs.*
+ac-comphist.dat

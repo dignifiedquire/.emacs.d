@@ -1,5 +1,5 @@
 ;; Load Dependencies
-(require 'cask "/usr/local/Cellar/cask/0.5.2/cask.el")
+(require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
 
@@ -71,3 +71,50 @@
 
 ;; dirtree
 (autoload 'dirtree "dirtree" "Add directory to tree view" t)
+
+;; JS Dev
+
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+
+(autopair-global-mode) ;; enable autopair in all buffers
+
+;; https://github.com/magnars/js2-refactor.el
+(js2r-add-keybindings-with-modifier "C-s-")
+;; eg. extract function with `C-s-e C-s-f`.
+
+
+;; Tern
+(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(eval-after-load 'tern
+   '(progn
+      (require 'tern-auto-complete)
+      (tern-ac-setup)))
+
+;; fixup for tern
+(defun delete-tern-process ()
+  (interactive)
+  (delete-process "Tern"))
+
+;; yasnippet
+;; should be loaded before auto complete so that they can work together
+(yas-global-mode 1)
+
+;; auto complete mod
+;; should be loaded after yasnippet so that they can work together
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+;; set the trigger key so that it can work together with yasnippet on tab key,
+;; if the word exists in yasnippet, pressing tab will cause yasnippet to
+;; activate, otherwise, auto-complete will
+(ac-set-trigger-key "TAB")
+(ac-set-trigger-key "<tab>")
+
+;; Linting
+(add-hook 'js2-mode-hook
+          (lambda () (flycheck-mode t)))
+
+
+;; Move between windows
+(define-key global-map (kbd "M-p") 'previous-multiframe-window)
+(define-key global-map (kbd "M-n") 'other-window)
