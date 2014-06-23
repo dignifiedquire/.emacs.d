@@ -1,5 +1,5 @@
 ;; Load Dependencies
-(require 'cask "~/.cask/cask.el")
+(require 'cask "/usr/local/Cellar/cask/0.5.2/cask.el")
 (cask-initialize)
 
 
@@ -56,3 +56,18 @@
 
 ;; Save all backup file in this directory.
 (setq backup-directory-alist (quote ((".*" . "~/.emacs_backups/"))))
+
+
+;; Scala Dev
+
+;; load the ensime lisp code...
+(add-to-list 'load-path "~/.emacs.d/ensime_2.10.0-0.9.8.9/elisp/")
+(require 'ensime)
+
+;; This step causes the ensime-mode to be started whenever
+;; scala-mode is started for a buffer. You may have to customize this step
+;; if you're not using the standard scala mode.
+(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+
+;; dirtree
+(autoload 'dirtree "dirtree" "Add directory to tree view" t)
