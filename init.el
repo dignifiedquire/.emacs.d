@@ -80,8 +80,8 @@
 (autopair-global-mode) ;; enable autopair in all buffers
 
 ;; https://github.com/magnars/js2-refactor.el
-(js2r-add-keybindings-with-modifier "C-s-")
-;; eg. extract function with `C-s-e C-s-f`.
+(js2r-add-keybindings-with-prefix "C-c C-m")
+;; eg. extract function with `C-c C-m ef`.
 
 
 ;; Tern
