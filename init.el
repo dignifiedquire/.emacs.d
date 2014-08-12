@@ -120,6 +120,27 @@
 ;; Move between windows
 (define-key global-map (kbd "M-p") 'previous-multiframe-window)
 (define-key global-map (kbd "M-n") 'other-window)
+
+;; Run grunt commands
+(global-set-key (kbd "M-RET") 'grunt)
+(setq grunt-cmd "grunt")
+
+(defun grunt ()
+  "Run grunt"
+  (interactive)
+  (shell-command grunt-cmd))
+
+;; Hack for color in shell command output
+(require 'ansi-color)
+
+(defadvice display-message-or-buffer (before ansi-color activate)
+  "Process ANSI color codes in shell output."
+  (let ((buf (ad-get-arg 0)))
+    (and (bufferp buf)
+         (string= (buffer-name buf) "*Shell Command Output*")
+         (with-current-buffer buf
+           (ansi-color-apply-on-region (point-min) (point-max))))))
+
 ;; Erlang
 
 ;; Linting
