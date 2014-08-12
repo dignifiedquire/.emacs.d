@@ -140,3 +140,6 @@
 
 ;; default font
 (set-face-attribute 'default nil :family "Droid Sans Mono")
+
+;; sweet.js
+(require 'sweetjs-mode)
