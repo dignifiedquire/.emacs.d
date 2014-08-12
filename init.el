@@ -164,3 +164,24 @@
 
 ;; sweet.js
 (require 'sweetjs-mode)
+
+
+;; Unindent
+
+(defun my-indent-region (N)
+  (interactive "p")
+  (if (use-region-p)
+      (progn (indent-rigidly (region-beginning) (region-end) (* N 2))
+             (setq deactivate-mark nil))
+    (self-insert-command N)))
+
+(defun my-unindent-region (N)
+  (interactive "p")
+  (if (use-region-p)
+      (progn (indent-rigidly (region-beginning) (region-end) (* N -2))
+             (setq deactivate-mark nil))
+    (self-insert-command N)))
+
+(define-key global-map (kbd "C-c >") 'my-indent-region)
+(define-key global-map (kbd "C-c <") 'my-unindent-region)
+
