@@ -2,6 +2,8 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
+(add-to-list 'load-path "~/.emacs.d/vendor")
+
 
 ;; No more temp files
 ;; Save all tempfiles in $TMPDIR/emacs$UID/
@@ -123,4 +125,10 @@
 ;; Linting
 (add-hook 'erlang-mode-hook
           (lambda () (flycheck-mode t)))
+
+
+;; Activate copy and paste
+
+(require 'pbcopy)
+(turn-on-pbcopy)
 
