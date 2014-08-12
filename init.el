@@ -132,3 +132,11 @@
 (require 'pbcopy)
 (turn-on-pbcopy)
 
+
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(setenv "LANG" "de_DE.UTF-8")
+
+;; default font
+(set-face-attribute 'default nil :family "Droid Sans Mono")
