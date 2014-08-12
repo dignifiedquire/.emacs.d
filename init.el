@@ -118,3 +118,9 @@
 ;; Move between windows
 (define-key global-map (kbd "M-p") 'previous-multiframe-window)
 (define-key global-map (kbd "M-n") 'other-window)
+;; Erlang
+
+;; Linting
+(add-hook 'erlang-mode-hook
+          (lambda () (flycheck-mode t)))
+

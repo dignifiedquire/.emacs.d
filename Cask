@@ -25,3 +25,7 @@
 (depends-on "flymake")
 (depends-on "scala-mode2")
 (depends-on "autopair")
+(depends-on "erlang")
+(depends-on "elixir-mode")
+(depends-on "elixir-mix")
+(depends-on "elixir-yasnippets")
