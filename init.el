@@ -4,6 +4,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 ;; No more temp files
 ;; Save all tempfiles in $TMPDIR/emacs$UID/
@@ -46,7 +48,8 @@
 
 
 ;; CoffeeScript
-'(coffee-tab-width 2)
+;; This gives you a tab of 2 spaces
+(custom-set-variables '(coffee-tab-width 2))
 
 ;; Organizational
 
@@ -77,7 +80,7 @@
 ;; JS Dev
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
 (autopair-global-mode) ;; enable autopair in all buffers
 
@@ -118,7 +121,7 @@
 
 
 ;; Move between windows
-(define-key global-map (kbd "M-p") 'previous-multiframe-window)
+;;(define-key global-map (kbd "M-p") 'previous-multiframe-window)
 (define-key global-map (kbd "M-n") 'other-window)
 
 ;; Run grunt commands
@@ -217,3 +220,66 @@
 
 ;; Disable scss mode
 (setq scss-compile-at-save nil)
+
+;; Indentation
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
+(setq web-mode-style-padding 2)
+
+
+;; JSX
+
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
+(defadvice web-mode-highlight-part (around tweak-jsx activate)
+  (if (equal web-mode-content-type "jsx")
+      (let ((web-mode-enable-part-face nil))
+        ad-do-it)
+    ad-do-it))
+
+
+;; Syntax checking
+;; (flycheck-define-checker jsxhint-checker
+;;   "A JSX syntax and style checker based on JSXHint."
+
+;;   :command ("jsxhint" source)
+;;   :error-patterns
+;;   ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
+;;   :modes (web-mode))
+;; (add-hook 'web-mode-hook
+;;           (lambda ()
+;;             (when (equal web-mode-content-type "jsx")
+;;               ;; enable flycheck
+;;               (flycheck-select-checker 'jsxhint-checker)
+;;               (flycheck-mode))))
+
+
+;; AucTeX
+(require 'tex)
+(require 'tex-site)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+(setq TeX-PDF-mode t)
+
+;; typescript
+;; If use bundled typescript.el,
+(require 'typescript)
+(add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
+
+(require 'tss)
+
+;; Key binding
+(setq tss-popup-help-key "C-:")
+(setq tss-jump-to-definition-key "C->")
+(setq tss-implement-definition-key "C-c i")
+
+;; Make config suit for you. About the config item, eval the following sexp.
+;; (customize-group "tss")
+
+;; Do setting recommemded configuration
+(tss-config-default)
