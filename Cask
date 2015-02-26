@@ -40,3 +40,7 @@
 (depends-on "web-mode")
 (depends-on "emmet-mode")
 (depends-on "ac-emmet")
+(depends-on "latex-preview-pane")
+(depends-on "exec-path-from-shell")
+(depends-on "cython-mode")
+(depends-on "tss")
