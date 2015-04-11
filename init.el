@@ -146,11 +146,6 @@
 
 ;; Erlang
 
-;; Linting
-(add-hook 'erlang-mode-hook
-          (lambda () (flycheck-mode t)))
-
-
 ;; Activate copy and paste
 
 (require 'pbcopy)
@@ -238,21 +233,6 @@
     ad-do-it))
 
 
-;; Syntax checking
-;; (flycheck-define-checker jsxhint-checker
-;;   "A JSX syntax and style checker based on JSXHint."
-
-;;   :command ("jsxhint" source)
-;;   :error-patterns
-;;   ((error line-start (1+ nonl) ": line " line ", col " column ", " (message) line-end))
-;;   :modes (web-mode))
-;; (add-hook 'web-mode-hook
-;;           (lambda ()
-;;             (when (equal web-mode-content-type "jsx")
-;;               ;; enable flycheck
-;;               (flycheck-select-checker 'jsxhint-checker)
-;;               (flycheck-mode))))
-
 
 ;; AucTeX
 (require 'tex)
@@ -283,3 +263,29 @@
 
 ;; Do setting recommemded configuration
 (tss-config-default)
+
+
+;; ES6
+
+;; turn on flychecking globally
+;;(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(javascript-jshint)))
+
+
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+(flycheck-add-mode 'javascript-eslint 'js2-mode)
+
+;; disable json-jsonlist checking for json files
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(json-jsonlist)))
+
+;; Let flycheck handle parse errors
+(setq-default js2-show-parse-errors nil)
+(setq-default js2-strict-missing-semi-warning nil)
+(setq-default js2-strict-trailing-comma-warning t) ;; jshint does not warn about this now for some reason
