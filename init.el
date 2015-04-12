@@ -289,3 +289,19 @@
 (setq-default js2-show-parse-errors nil)
 (setq-default js2-strict-missing-semi-warning nil)
 (setq-default js2-strict-trailing-comma-warning t) ;; jshint does not warn about this now for some reason
+
+;; Hex color preview
+(defun xah-syntax-color-hex ()
+  "Syntax color hex color spec such as #ff1100 in current buffer."
+  (interactive)
+  (font-lock-add-keywords
+   nil
+   '(("#[abcdef[:digit:]]\\{6\\}"
+      (0 (put-text-property
+          (match-beginning 0)
+          (match-end 0)
+          'face (list :background (match-string-no-properties 0)))))))
+  (font-lock-fontify-buffer)
+  )
+(add-hook 'css-mode-hook 'xah-syntax-color-hex)
+(add-hook 'html-mode-hook 'xah-syntax-color-hex)
