@@ -44,3 +44,4 @@
 (depends-on "exec-path-from-shell")
 (depends-on "cython-mode")
 (depends-on "tss")
+(depends-on "editorconfig")
