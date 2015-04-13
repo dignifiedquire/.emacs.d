@@ -1,3 +1,4 @@
+
 ;; Load Dependencies
 (require 'cask "/usr/local/Cellar/cask/0.7.2/cask.el")
 (cask-initialize)
@@ -49,7 +50,15 @@
 
 ;; CoffeeScript
 ;; This gives you a tab of 2 spaces
-(custom-set-variables '(coffee-tab-width 2))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(coffee-tab-width 2)
+ '(flycheck-disabled-checkers (quote (javascript-jshint)))
+ '(flycheck-eslintrc ".eslintrc")
+ '(js2-strict-missing-semi-warning nil))
 
 ;; Organizational
 
@@ -96,6 +105,12 @@
       (require 'tern-auto-complete)
       (tern-ac-setup)))
 
+(add-hook 'web-mode-hook (lambda () (tern-mode t)))
+(eval-after-load 'tern
+   '(progn
+      (require 'tern-auto-complete)
+      (tern-ac-setup)))
+
 ;; fixup for tern
 (defun delete-tern-process ()
   (interactive)
@@ -117,6 +132,9 @@
 
 ;; Linting
 (add-hook 'js2-mode-hook
+          (lambda () (flycheck-mode t)))
+
+(add-hook 'web-mode-hook
           (lambda () (flycheck-mode t)))
 
 
@@ -187,7 +205,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(js2-function-call ((t (:inherit default :foreground "magenta")))))
 
 
 ;; Haskell
@@ -213,13 +231,17 @@
 (add-hook 'web-mode-hook 'ac-emmet-html-setup)
 ;;(add-hook 'css-mode-hook 'ac-emmet-css-setup)
 
+(add-hook 'web-mode-hook
+          (lambda ()
+            (web-mode-set-content-type "jsx")))
+
 ;; Disable scss mode
 (setq scss-compile-at-save nil)
 
 ;; Indentation
-(setq web-mode-markup-indent-offset 2)
-(setq web-mode-css-indent-offset 2)
-(setq web-mode-code-indent-offset 2)
+(setq web-mode-markup-indent-offset 4)
+(setq web-mode-css-indent-offset 4)
+(setq web-mode-code-indent-offset 4)
 (setq web-mode-style-padding 2)
 
 
@@ -235,20 +257,20 @@
 
 
 ;; AucTeX
-(require 'tex)
-(require 'tex-site)
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
-(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(setq reftex-plug-into-AUCTeX t)
-(setq TeX-PDF-mode t)
+;; (require 'tex)
+;; (require 'tex-site)
+;; (setq TeX-auto-save t)
+;; (setq TeX-parse-self t)
+;; (setq-default TeX-master nil)
+;; (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+;; (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+;; (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+;; (setq reftex-plug-into-AUCTeX t)
+;; (setq TeX-PDF-mode t)
 
 ;; typescript
 ;; If use bundled typescript.el,
-(require 'typescript)
+;(require 'typescript)
 (add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
 
 (require 'tss)

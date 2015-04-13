@@ -45,3 +45,4 @@
 (depends-on "cython-mode")
 (depends-on "tss")
 (depends-on "editorconfig")
+(depends-on "js3-mode")
