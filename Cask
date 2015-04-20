@@ -1,4 +1,5 @@
 (source melpa)
+(source gnu)
 
 (depends-on "zenburn-theme")
 (depends-on "coffee-mode")
@@ -32,8 +33,6 @@
 (depends-on "scss-mode")
 (depends-on "rust-mode")
 (depends-on "haskell-mode")
-(depends-on "flycheck-haskell")
-(depends-on "flymake-haskell-multi")
 (depends-on "hi2")
 (depends-on "ghc")
 (depends-on "ghci-completion")

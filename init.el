@@ -1,9 +1,11 @@
-
 ;; Load Dependencies
 (require 'cask "/usr/local/Cellar/cask/0.7.2/cask.el")
 (cask-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
+
+;; turn on flychecking globally
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
@@ -56,8 +58,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
- '(flycheck-disabled-checkers (quote (javascript-jshint)))
- '(flycheck-eslintrc ".eslintrc")
+ ;'(flycheck-eslintrc ".eslintrc")
  '(js2-strict-missing-semi-warning nil))
 
 ;; Organizational
@@ -89,7 +90,7 @@
 ;; JS Dev
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
+;(add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
 (autopair-global-mode) ;; enable autopair in all buffers
 
@@ -212,8 +213,8 @@
 (add-hook 'haskell-mode-hook 'haskell-indent-mode)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
+;(eval-after-load 'flycheck
+;  '(add-hook 'flycheck-mode-hook #'flycheck-haskell-setup))
 
 ;; Web mode
 ;; http://web-mode.org/
@@ -289,23 +290,10 @@
 
 ;; ES6
 
-;; turn on flychecking globally
-;;(add-hook 'after-init-hook #'global-flycheck-mode)
+;; Use eslint instead of jshint
+(setq flycheck-disabled-checkers '(javascript-jshint))
+(setq flycheck-checkers '(javascript-eslint))
 
-;; disable jshint since we prefer eslint checking
-(setq-default flycheck-disabled-checkers
-  (append flycheck-disabled-checkers
-    '(javascript-jshint)))
-
-
-;; use eslint with web-mode for jsx files
-(flycheck-add-mode 'javascript-eslint 'web-mode)
-(flycheck-add-mode 'javascript-eslint 'js2-mode)
-
-;; disable json-jsonlist checking for json files
-(setq-default flycheck-disabled-checkers
-  (append flycheck-disabled-checkers
-    '(json-jsonlist)))
 
 ;; Let flycheck handle parse errors
 (setq-default js2-show-parse-errors nil)
