@@ -1,5 +1,5 @@
 ;; Load Dependencies
-(require 'cask "/usr/local/Cellar/cask/0.7.2/cask.el")
+(require 'cask "/usr/local/Cellar/cask/0.7.2_1/cask.el")
 (cask-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
@@ -31,14 +31,17 @@
 (add-to-list 'desktop-modes-not-to-save 'fundamental-mode)
 
 ;; Styling
-(load-theme 'zenburn t)
-
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+;(load-theme 'zenburn t)
+(load-theme 'spacegray t)
 
 ;; Coding
 
 ;; Tabs
-(setq tab-width 4)
+(setq tab-width 2)
 (setq-default indent-tabs-mode nil)
+(setq js-indent-level 2)
+(setq less-css-indent-level 2)
 
 ;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -58,8 +61,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
- ;'(flycheck-eslintrc ".eslintrc")
- '(js2-strict-missing-semi-warning nil))
+ '(css-indent-offset 2)
+ '(custom-safe-themes
+   (quote
+    ("4ff23437b3166eeb7ca9fa026b2b030bba7c0dfdc1ff94df14dfb1bcaee56c78" "1fa76c8d9baaeb5dc498d2a4baaf71be6d3a8b6412af994d691fbe7a7b167321" default)))
+ '(js2-basic-offset 2)
+ '(js2-strict-inconsistent-return-warning nil)
+ '(js2-strict-missing-semi-warning nil)
+ '(json-reformat:indent-width 2))
 
 ;; Organizational
 
@@ -152,16 +161,16 @@
   (interactive)
   (shell-command grunt-cmd))
 
-;; Hack for color in shell command output
-(require 'ansi-color)
+;; ;; Hack for color in shell command output
+;; (require 'ansi-color)
 
-(defadvice display-message-or-buffer (before ansi-color activate)
-  "Process ANSI color codes in shell output."
-  (let ((buf (ad-get-arg 0)))
-    (and (bufferp buf)
-         (string= (buffer-name buf) "*Shell Command Output*")
-         (with-current-buffer buf
-           (ansi-color-apply-on-region (point-min) (point-max))))))
+;; (defadvice display-message-or-buffer (before ansi-color activate)
+;;   "Process ANSI color codes in shell output."
+;;   (let ((buf (ad-get-arg 0)))
+;;     (and (bufferp buf)
+;;          (string= (buffer-name buf) "*Shell Command Output*")
+;;          (with-current-buffer buf
+;;            (ansi-color-apply-on-region (point-min) (point-max))))))
 
 ;; Erlang
 
@@ -222,6 +231,9 @@
 (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.eex\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
@@ -240,9 +252,9 @@
 (setq scss-compile-at-save nil)
 
 ;; Indentation
-(setq web-mode-markup-indent-offset 4)
-(setq web-mode-css-indent-offset 4)
-(setq web-mode-code-indent-offset 4)
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-code-indent-offset 2)
 (setq web-mode-style-padding 2)
 
 
@@ -255,6 +267,11 @@
         ad-do-it)
     ad-do-it))
 
+(setq web-mode-engines-alist
+      '(("erb" . "\\.eex\\'")
+        ("ctemplate" . "\\.handlebars\\")
+        ("ctemplate" . "\\.hbs\\"))
+)
 
 
 ;; AucTeX
