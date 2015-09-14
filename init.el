@@ -32,7 +32,6 @@
 
 ;; Styling
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-;(load-theme 'zenburn t)
 (load-theme 'spacegray t)
 
 ;; Coding
@@ -257,6 +256,8 @@
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-style-padding 2)
 
+
+(setq css-indent-offset 2)
 
 ;; JSX
 
