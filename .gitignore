@@ -3,3 +3,4 @@ elpa
 auto-save-list
 .emacs.*
 ac-comphist.dat
+projectile.cache
