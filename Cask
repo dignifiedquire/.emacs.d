@@ -63,3 +63,4 @@
 (depends-on "projectile")
 (depends-on "helm-projectile")
 (depends-on "robe")
+(depends-on "diminish")

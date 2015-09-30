@@ -47,6 +47,7 @@
 (add-hook 'web-mode-hook
           (lambda () (flycheck-mode t)))
 
+(flycheck-add-mode 'javascript-eslint 'web-mode)
 
 ;; Run grunt commands
 (global-set-key (kbd "M-RET") 'grunt)

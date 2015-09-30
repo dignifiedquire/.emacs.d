@@ -1,1 +1,1 @@
-("~/work/codio/site/" "~/.emacs.d/" "~/work/codio/dashboard/")
+("~/.emacs.d/" "~/work/codio/dashboard/" "~/work/codio/site/")

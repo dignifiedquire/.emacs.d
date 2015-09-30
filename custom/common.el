@@ -120,3 +120,8 @@
 ;; Dash
 (global-set-key "\M-#" 'dash-at-point)
 (global-set-key "\C-ce" 'dash-at-point-with-docset)
+
+
+;; Fringe
+
+(fringe-mode 4)
