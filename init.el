@@ -8,6 +8,7 @@
 (load-file "~/.emacs.d/custom/common.el")
 (load-file "~/.emacs.d/custom/helm.el")
 (load-file "~/.emacs.d/custom/projectile.el")
+(load-file "~/.emacs.d/custom/company.el")
 (load-file "~/.emacs.d/custom/ruby.el")
 (load-file "~/.emacs.d/custom/web-mode.el")
 (load-file "~/.emacs.d/custom/javascript.el")

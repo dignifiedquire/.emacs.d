@@ -62,3 +62,4 @@
 (depends-on "helm")
 (depends-on "projectile")
 (depends-on "helm-projectile")
+(depends-on "robe")
