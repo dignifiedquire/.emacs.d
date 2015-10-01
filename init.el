@@ -16,6 +16,7 @@
 (load-file "~/.emacs.d/custom/scala.el")
 (load-file "~/.emacs.d/custom/tex.el")
 (load-file "~/.emacs.d/custom/haskell.el")
+(load-file "~/.emacs.d/custom/diminish.el")
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
