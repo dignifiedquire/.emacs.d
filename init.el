@@ -1,5 +1,5 @@
 ;; Load Dependencies
-(require 'cask "/usr/local/Cellar/cask/0.7.2_1/cask.el")
+(require 'cask "/usr/local/Cellar/cask/0.7.3/cask.el")
 (cask-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/vendor")
@@ -17,6 +17,7 @@
 (load-file "~/.emacs.d/custom/tex.el")
 (load-file "~/.emacs.d/custom/haskell.el")
 (load-file "~/.emacs.d/custom/diminish.el")
+(load-file "~/.emacs.d/custom/go.el")
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
