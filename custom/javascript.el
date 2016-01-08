@@ -24,6 +24,8 @@
 
 ;; Tern
 (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(add-hook 'web-mode-hook (lambda () (tern-mode t)))
+
 (eval-after-load 'tern
    '(progn
       (require 'tern-auto-complete)
@@ -65,9 +67,14 @@
 ;; ES6
 
 ;; Use eslint instead of jshint
-(setq flycheck-disabled-checkers '(javascript-jshint))
-(setq flycheck-checkers '(javascript-eslint))
-
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers (append flycheck-disabled-checkers '(javascript-jshint)))
+;; enable flychecking for js-mode
+(add-hook 'js-mode-hook (lambda () (flycheck-mode t)))
+;; enable flychecking for js2-mode
+(add-hook 'js2-mode-hook (lambda () (flycheck-mode t)))
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
 
 ;; Let flycheck handle parse errors
 (setq-default js2-show-parse-errors nil)
