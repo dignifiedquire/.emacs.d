@@ -42,17 +42,13 @@
   (interactive)
   (delete-process "Tern"))
 
+(require 'flycheck)
 ;; Linting
 (add-hook 'js2-mode-hook
           (lambda () (flycheck-mode t)))
 
 (add-hook 'web-mode-hook
           (lambda () (flycheck-mode t)))
-
-(with-eval-after-load 'flycheck
-  '(progn
-     (flycheck-add-mode 'javascript-eslint 'web-mode)))
-
 
 ;; Run grunt commands
 (global-set-key (kbd "M-RET") 'grunt)
@@ -68,15 +64,19 @@
 
 ;; Use eslint instead of jshint
 ;; disable jshint since we prefer eslint checking
-(setq-default flycheck-disabled-checkers (append flycheck-disabled-checkers '(javascript-jshint)))
+(setq-default flycheck-disabled-checkers '(javascript-jshint))
 ;; enable flychecking for js-mode
 (add-hook 'js-mode-hook (lambda () (flycheck-mode t)))
 ;; enable flychecking for js2-mode
 (add-hook 'js2-mode-hook (lambda () (flycheck-mode t)))
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
+(flycheck-add-mode 'javascript-eslint 'js-mode)
+(flycheck-add-mode 'javascript-eslint 'js2-mode)
 
 ;; Let flycheck handle parse errors
 (setq-default js2-show-parse-errors nil)
 (setq-default js2-strict-missing-semi-warning nil)
-(setq-default js2-strict-trailing-comma-warning t) ;; jshint does not warn about this now for some reason
+
+;; jshint does not warn about this now for some reason
+(setq-default js2-strict-trailing-comma-warning t)

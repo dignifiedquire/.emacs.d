@@ -28,6 +28,7 @@
 
 ;; Tabs
 (setq tab-width 2)
+(setq default-tab-width 2)
 (setq-default indent-tabs-mode nil)
 (setq js-indent-level 2)
 (setq less-css-indent-level 2)
