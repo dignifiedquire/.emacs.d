@@ -8,4 +8,3 @@
 (load-theme 'spacemacs-dark t)
 (setq powerline-default-separator 'wave)
 (setq spaceline-window-numbers-unicode t)
-

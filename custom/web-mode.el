@@ -35,6 +35,7 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-code-indent-offset 2)
 (setq web-mode-style-padding 2)
+(setq web-mode-attr-indent-offset 2)
 
 
 ;; JSX

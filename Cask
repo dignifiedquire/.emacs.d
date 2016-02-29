@@ -69,4 +69,3 @@
 (depends-on "flymake-rust")
 (depends-on "company-racer")
 (depends-on "racer")
-(depends-on "toml-mode")
