@@ -83,7 +83,7 @@
 
 ;; yasnippet
 ;; should be loaded before auto complete so that they can work together
-(yas-global-mode 1)
+;(yas-global-mode 1)
 
 ;; auto complete mod
 (require 'auto-complete)
@@ -125,4 +125,4 @@
 
 ;; Fringe
 
-(fringe-mode 4)
+;;(fringe-mode 4)

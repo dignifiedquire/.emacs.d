@@ -23,24 +23,24 @@
 
 
 ;; Tern
-(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-(add-hook 'web-mode-hook (lambda () (tern-mode t)))
+; (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+; (add-hook 'web-mode-hook (lambda () (tern-mode t)))
 
-(eval-after-load 'tern
-   '(progn
-      (require 'tern-auto-complete)
-      (tern-ac-setup)))
+;; (eval-after-load 'tern
+;;    '(progn
+;;       (require 'tern-auto-complete)
+;;       (tern-ac-setup)))
 
-(add-hook 'web-mode-hook (lambda () (tern-mode t)))
-(eval-after-load 'tern
-   '(progn
-      (require 'tern-auto-complete)
-      (tern-ac-setup)))
+;; (add-hook 'web-mode-hook (lambda () (tern-mode t)))
+;; (eval-after-load 'tern
+;;    '(progn
+;;       (require 'tern-auto-complete)
+;;       (tern-ac-setup)))
 
-;; fixup for tern
-(defun delete-tern-process ()
-  (interactive)
-  (delete-process "Tern"))
+;; ;; fixup for tern
+;; (defun delete-tern-process ()
+;;   (interactive)
+;;   (delete-process "Tern"))
 
 (require 'flycheck)
 ;; Linting
@@ -51,14 +51,6 @@
           (lambda () (flycheck-mode t)))
 
 ;; Run grunt commands
-(global-set-key (kbd "M-RET") 'grunt)
-(setq grunt-cmd "grunt")
-
-(defun grunt ()
-  "Run grunt"
-  (interactive)
-  (shell-command grunt-cmd))
-
 
 ;; ES6
 
@@ -69,10 +61,17 @@
 (add-hook 'js-mode-hook (lambda () (flycheck-mode t)))
 ;; enable flychecking for js2-mode
 (add-hook 'js2-mode-hook (lambda () (flycheck-mode t)))
+
+(require 'flycheck-flow)
+(add-to-list 'flycheck-checkers 'javascript-flow)
+
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 (flycheck-add-mode 'javascript-eslint 'js-mode)
 (flycheck-add-mode 'javascript-eslint 'js2-mode)
+(flycheck-add-next-checker 'javascript-flow 'javascript-eslint)
+
+
 
 ;; Let flycheck handle parse errors
 (setq-default js2-show-parse-errors nil)
@@ -80,3 +79,5 @@
 
 ;; jshint does not warn about this now for some reason
 (setq-default js2-strict-trailing-comma-warning t)
+
+(add-hook 'js2-mode-hook #'setup-tide-mode)
