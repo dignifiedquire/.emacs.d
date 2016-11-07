@@ -126,3 +126,8 @@
 ;; Fringe
 
 ;;(fringe-mode 4)
+
+(let ((font "Operator Mono Light 18"))
+  (set-frame-font font)
+  (add-to-list 'default-frame-alist
+               `(font . ,font)))
