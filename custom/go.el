@@ -15,7 +15,7 @@
 (setenv "GOPATH" "/Users/dignifiedquire/.go")
 
 (setq exec-path (cons "/usr/local/go/bin" exec-path))
-(add-to-list 'exec-path "/Users/tleyden/Development/gocode/bin")
+(add-to-list 'exec-path "/Users/dignifiedquire/.go/bin")
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 (defun my-go-mode-hook ()

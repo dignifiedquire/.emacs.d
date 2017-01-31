@@ -5,6 +5,7 @@
 
 (spaceline-emacs-theme)
 
-(load-theme 'spacemacs-dark t)
+;; (load-theme 'spacemacs-dark t)
+(load-theme 'dracula t)
 (setq powerline-default-separator 'wave)
 (setq spaceline-window-numbers-unicode t)

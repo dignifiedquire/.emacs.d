@@ -80,4 +80,4 @@
 ;; jshint does not warn about this now for some reason
 (setq-default js2-strict-trailing-comma-warning t)
 
-(add-hook 'js2-mode-hook #'setup-tide-mode)
+;; (add-hook 'js2-mode-hook #'setup-tide-mode)
