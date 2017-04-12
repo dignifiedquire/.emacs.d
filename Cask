@@ -73,3 +73,5 @@
 (depends-on "tide")
 (depends-on "dracula-theme")
 (depends-on "cargo")
+(depends-on "dockerfile-mode")
+(depends-on "toml-mode")

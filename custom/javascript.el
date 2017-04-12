@@ -62,14 +62,14 @@
 ;; enable flychecking for js2-mode
 (add-hook 'js2-mode-hook (lambda () (flycheck-mode t)))
 
-(require 'flycheck-flow)
-(add-to-list 'flycheck-checkers 'javascript-flow)
+; (require 'flycheck-flow)
+; (add-to-list 'flycheck-checkers 'javascript-flow)
 
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 (flycheck-add-mode 'javascript-eslint 'js-mode)
 (flycheck-add-mode 'javascript-eslint 'js2-mode)
-(flycheck-add-next-checker 'javascript-flow 'javascript-eslint)
+;(flycheck-add-next-checker 'javascript-flow 'javascript-eslint)
 
 
 

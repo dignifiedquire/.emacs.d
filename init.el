@@ -45,7 +45,7 @@
  '(css-indent-offset 2)
  '(custom-safe-themes
    (quote
-    ("2837fa235c6a750ad719d9aaca292e000ff0e74a0de898b31c1140a6a6b150cd" "3b502f3ed0b63931c526795969d2653b59d8323f9e18f68683bfea0ddf47f378" default)))
+    ("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "d9129a8d924c4254607b5ded46350d68cc00b6e38c39fc137c3cfb7506702c12" "2837fa235c6a750ad719d9aaca292e000ff0e74a0de898b31c1140a6a6b150cd" "3b502f3ed0b63931c526795969d2653b59d8323f9e18f68683bfea0ddf47f378" default)))
  '(flycheck-javascript-flow-args nil)
  '(font-lock-global-modes (quote (not speedbar-mode)))
  '(js-indent-level 2)
