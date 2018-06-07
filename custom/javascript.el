@@ -21,6 +21,11 @@
 (js2r-add-keybindings-with-prefix "C-c C-m")
 ;; eg. extract function with `C-c C-m ef`.
 
+(defun enable-minor-mode (my-pair)
+  "Enable minor mode if filename match the regexp.  MY-PAIR is a cons cell (regexp . minor-mode)."
+  (if (buffer-file-name)
+      (if (string-match (car my-pair) buffer-file-name)
+          (funcall (cdr my-pair)))))
 
 ;; Tern
 ; (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
@@ -42,7 +47,6 @@
 ;;   (interactive)
 ;;   (delete-process "Tern"))
 
-(require 'flycheck)
 ;; Linting
 (add-hook 'js2-mode-hook
           (lambda () (flycheck-mode t)))
@@ -50,27 +54,20 @@
 (add-hook 'web-mode-hook
           (lambda () (flycheck-mode t)))
 
-;; Run grunt commands
-
-;; ES6
-
 ;; Use eslint instead of jshint
 ;; disable jshint since we prefer eslint checking
 (setq-default flycheck-disabled-checkers '(javascript-jshint))
-;; enable flychecking for js-mode
-(add-hook 'js-mode-hook (lambda () (flycheck-mode t)))
-;; enable flychecking for js2-mode
-(add-hook 'js2-mode-hook (lambda () (flycheck-mode t)))
 
-; (require 'flycheck-flow)
-; (add-to-list 'flycheck-checkers 'javascript-flow)
+
+(require 'flycheck-flow)
+(add-to-list 'flycheck-checkers 'javascript-flow)
+(flycheck-add-next-checker 'javascript-flow 'javascript-flow-coverage)
+(flycheck-add-next-checker 'javascript-flow-coverage 'javascript-eslint)
 
 ;; use eslint with web-mode for jsx files
 (flycheck-add-mode 'javascript-eslint 'web-mode)
 (flycheck-add-mode 'javascript-eslint 'js-mode)
 (flycheck-add-mode 'javascript-eslint 'js2-mode)
-;(flycheck-add-next-checker 'javascript-flow 'javascript-eslint)
-
 
 
 ;; Let flycheck handle parse errors
@@ -80,4 +77,22 @@
 ;; jshint does not warn about this now for some reason
 (setq-default js2-strict-trailing-comma-warning t)
 
-;; (add-hook 'js2-mode-hook #'setup-tide-mode)
+;; ;; (add-hook 'js2-mode-hook #'setup-tide-mode)
+
+;; (add-hook 'js2-mode-hook 'prettier-js-mode)
+;; (add-hook 'web-mode-hook #'(lambda ()
+;;                              (enable-minor-mode
+;;                               '("\\.jsx?\\'" . prettier-js-mode))))
+
+;; use local eslint from node_modules before global
+;; http://emacs.stackexchange.com/questions/21205/flycheck-with-file-relative-eslint-executable
+(defun my/use-eslint-from-node-modules ()
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root
+                      (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                        root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable eslint))))
+(add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)

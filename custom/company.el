@@ -6,6 +6,7 @@
 (setq company-minimum-prefix-length 2)
 
 
-;(add-to-list 'company-backends 'company-flow)
+(add-to-list 'company-backends 'company-flow)
 (add-to-list 'company-backends 'company-robe)
+(add-to-list 'company-backends 'company-go)
 ; (add-to-list 'company-backends 'company-racer)
