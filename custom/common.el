@@ -77,7 +77,7 @@
 (setenv "LANG" "de_DE.UTF-8")
 
 ;; default font
-(set-face-attribute 'default nil :family "Droid Sans Mono")
+(set-face-attribute 'default nil :family "Operator Mono")
 
 ;; dirtree
 (autoload 'dirtree "dirtree" "Add directory to tree view" t)
