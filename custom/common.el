@@ -134,3 +134,13 @@
                `(font . ,font)))
 
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+
+
+;; glsl
+(add-to-list 'auto-mode-alist '("\\.glsl\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.vert\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.frag\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.geom\\'" . glsl-mode))
+(add-to-list 'auto-mode-alist '("\\.comp\\'" . glsl-mode))
+
+(require 'flycheck-glsl)

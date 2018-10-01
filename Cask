@@ -88,13 +88,9 @@
 (depends-on "go-projectile")
 (depends-on "go-mode")
 (depends-on "oceanic-theme")
-
-(depends-on "lsp-mode"
-            :git "https://github.com/emacs-lsp/lsp-mode.git"
-            :branch "master")
-(depends-on "lsp-ui"
-            :git "https://github.com/emacs-lsp/lsp-ui.git"
-            :branch "master")
-(depends-on "lsp-rust"
-            :git "https://github.com/emacs-lsp/lsp-rust.git"
-            :branch "master")
+(depends-on "company-lsp")
+(depends-on "lsp-go")
+(depends-on "lsp-mode")
+(depends-on "lsp-ui")
+(depends-on "lsp-rust")
+(depends-on "glsl-mode")

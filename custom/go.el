@@ -44,3 +44,17 @@
   (dolist (elt (reverse go-test-compilation-error-regexp-alist))
     (add-to-list 'compilation-error-regexp-alist elt t)))
 (add-hook 'go-mode-hook 'prepend-go-compilation-regexps)
+
+
+;; (require 'lsp-mode)
+;; (require 'lsp-ui)
+;; (with-eval-after-load 'lsp-mode
+;;   (require 'lsp-go))
+
+;; (add-hook 'lsp-mode-hook 'lsp-ui-mode)
+;; (add-hook 'go-mode-hook #'lsp-go-enable)
+
+;; (defun my-set-projectile-root ()
+;;   (when lsp--cur-workspace
+;;     (setq projectile-project-root (lsp--workspace-root lsp--cur-workspace))))
+;; (add-hook 'lsp-before-open-hook #'my-set-projectile-root)

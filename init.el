@@ -82,3 +82,4 @@
      (340 . "#ebcb8b")
      (360 . "#B4EB89"))))
  '(vc-annotate-very-old-color nil))
+(put 'upcase-region 'disabled nil)

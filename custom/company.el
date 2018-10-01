@@ -8,5 +8,6 @@
 
 (add-to-list 'company-backends 'company-flow)
 (add-to-list 'company-backends 'company-robe)
+(add-to-list 'company-backends 'company-lsp)
 (add-to-list 'company-backends 'company-go)
 ; (add-to-list 'company-backends 'company-racer)
