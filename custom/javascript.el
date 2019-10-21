@@ -69,6 +69,7 @@
 (flycheck-add-mode 'javascript-eslint 'js-mode)
 (flycheck-add-mode 'javascript-eslint 'js2-mode)
 
+(add-hook 'js2-mode-hook 'prettier-js-mode)
 
 ;; Let flycheck handle parse errors
 (setq-default js2-show-parse-errors nil)

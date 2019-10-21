@@ -2,7 +2,7 @@
 ; as you switch between them.
 (require 'projectile)
 
-(projectile-global-mode 1)
+(projectile-global-mode +1)
 
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
@@ -11,4 +11,7 @@
 
 (require 'go-projectile)
 (go-projectile-tools-add-path)
-(setq gofmt-command (concat go-projectile-tools-path "/bin/goimports"))
+(setq gofmt-command (concat "/Users/dignifiedquire/.go/bin/goimports"))
+
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)

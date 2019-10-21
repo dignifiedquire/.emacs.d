@@ -1,11 +1,14 @@
-(require 'anzu)
-(require 'org)
-(require 'org-pomodoro)
-(require 'spaceline-config)
+;(require 'anzu)
+;(require 'org)
+;(require 'org-pomodoro)
+;(require 'spaceline-config)
 
-(spaceline-emacs-theme)
+;(spaceline-emacs-theme)
 
 ; (load-theme 'spacemacs-dark t)
-(load-theme 'dracula t)
-(setq powerline-default-separator 'wave)
-(setq spaceline-window-numbers-unicode t)
+(use-package dracula-theme
+  :config
+  (load-theme 'dracula t))
+
+;(setq powerline-default-separator 'wave)
+;(setq spaceline-window-numbers-unicode t)

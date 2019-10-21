@@ -1,32 +1,52 @@
-;; Load Dependencies
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 (package-initialize)
 
-(require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
-(cask-initialize)
+(require 'package)
+(setq package-enable-at-startup nil)
 
-(add-to-list 'load-path "~/.emacs.d/vendor")
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(setq package-archives
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+	("marmalade" . "https://marmalade-repo.org/packages/")
+	("melpa" . "https://melpa.org/packages/")
+	("melpa-stable" . "http://stable.melpa.org/packages/")))
+
+;; Make sure use-package is installed
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package)
+  (add-to-list 'load-path "~/.emacs.d/vendor")
+  (add-to-list 'load-path "~/.emacs.d/use-package"))
+
+(require 'use-package-ensure)
+
+;; Keeping packages up to date
+(use-package auto-package-update
+  :ensure t
+  :config
+  (setq use-package-always-ensure t)
+  (setq auto-package-update-delete-old-versions t)
+  (auto-package-update-maybe))
 
 (load-file "~/.emacs.d/custom/space.el")
 (load-file "~/.emacs.d/custom/common.el")
 (load-file "~/.emacs.d/custom/helm.el")
-(load-file "~/.emacs.d/custom/projectile.el")
+;;(load-file "~/.emacs.d/custom/projectile.el")
 (load-file "~/.emacs.d/custom/rust.el")
 (load-file "~/.emacs.d/custom/company.el")
-(load-file "~/.emacs.d/custom/ruby.el")
-(load-file "~/.emacs.d/custom/web-mode.el")
-(load-file "~/.emacs.d/custom/typescript.el")
-(load-file "~/.emacs.d/custom/javascript.el")
-(load-file "~/.emacs.d/custom/scala.el")
-(load-file "~/.emacs.d/custom/tex.el")
-(load-file "~/.emacs.d/custom/haskell.el")
-(load-file "~/.emacs.d/custom/diminish.el")
+;; (load-file "~/.emacs.d/custom/ruby.el")
+;;(load-file "~/.emacs.d/custom/web-mode.el")
+;; (load-file "~/.emacs.d/custom/typescript.el")
+;;(load-file "~/.emacs.d/custom/javascript.el")
+;; (load-file "~/.emacs.d/custom/scala.el")
+;; (load-file "~/.emacs.d/custom/tex.el")
+;; (load-file "~/.emacs.d/custom/haskell.el")
 (load-file "~/.emacs.d/custom/go.el")
-(load-file "~/.emacs.d/custom/org.el")
+;;(load-file "~/.emacs.d/custom/org.el")
+;; (load-file "~/.emacs.d/custom/swift.el)
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -50,16 +70,23 @@
  '(custom-enabled-themes (quote (dracula)))
  '(custom-safe-themes
    (quote
-    ("a4df5d4a4c343b2712a8ed16bc1488807cd71b25e3108e648d4a26b02bc990b3" "4486ade2acbf630e78658cd6235a5c6801090c2694469a2a2b4b0e12227a64b9" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "5dc0ae2d193460de979a463b907b4b2c6d2c9c4657b2e9e66b8898d2592e3de5" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "d8f76414f8f2dcb045a37eb155bfaa2e1d17b6573ed43fb1d18b936febc7bbc2" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "d9129a8d924c4254607b5ded46350d68cc00b6e38c39fc137c3cfb7506702c12" "2837fa235c6a750ad719d9aaca292e000ff0e74a0de898b31c1140a6a6b150cd" "3b502f3ed0b63931c526795969d2653b59d8323f9e18f68683bfea0ddf47f378" default)))
+    ("8d805143f2c71cfad5207155234089729bb742a1cb67b7f60357fdd952044315" "12bacee81d067acf07dec4c867be541a04744a6ac6a39636de25a2c77e9b573c" "aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" "a4df5d4a4c343b2712a8ed16bc1488807cd71b25e3108e648d4a26b02bc990b3" "4486ade2acbf630e78658cd6235a5c6801090c2694469a2a2b4b0e12227a64b9" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "5dc0ae2d193460de979a463b907b4b2c6d2c9c4657b2e9e66b8898d2592e3de5" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "d8f76414f8f2dcb045a37eb155bfaa2e1d17b6573ed43fb1d18b936febc7bbc2" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "d9129a8d924c4254607b5ded46350d68cc00b6e38c39fc137c3cfb7506702c12" "2837fa235c6a750ad719d9aaca292e000ff0e74a0de898b31c1140a6a6b150cd" "3b502f3ed0b63931c526795969d2653b59d8323f9e18f68683bfea0ddf47f378" default)))
  '(fci-rule-color "#343d46")
  '(flycheck-javascript-flow-args nil)
  '(font-lock-global-modes (quote (not speedbar-mode)))
  '(hl-sexp-background-color "#efebe9")
- '(js-indent-level 2)
+ '(js-indent-level 2 t)
  '(js2-basic-offset 2)
  '(js2-strict-inconsistent-return-warning nil)
  '(js2-strict-missing-semi-warning nil)
  '(json-reformat:indent-width 2)
+ '(lsp-enable-file-watchers nil)
+ '(lsp-rust-build-lib t)
+ '(lsp-rust-cfg-test t)
+ '(lsp-rust-unstable-features t)
+ '(package-selected-packages
+   (quote
+    (csharp-mode go-mode defpackage slime eshell-z esh-help esh-autosuggest forge magit smart-dash cargo rust-mode company-lsp company-quickhelp company rg helm-rg helm-mode helm lsp-helm helm-config yasnippet pbcopy smartparens flycheck lsp-ui lsp-mode rustic dracula-theme auto-package-update)))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
@@ -82,3 +109,5 @@
      (340 . "#ebcb8b")
      (360 . "#B4EB89"))))
  '(vc-annotate-very-old-color nil))
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)

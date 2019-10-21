@@ -28,7 +28,6 @@
 (depends-on "elixir-mode")
 (depends-on "elixir-yasnippets")
 (depends-on "scss-mode")
-(depends-on "rust-mode")
 (depends-on "haskell-mode")
 (depends-on "hi2")
 (depends-on "ghc")
@@ -65,7 +64,7 @@
 (depends-on "diminish")
 (depends-on "go-mode")
 (depends-on "elm-mode")
-(depends-on "flymake-rust")
+(depends-on "flycheck-rust")
 (depends-on "racer")
 (depends-on "decide")
 (depends-on "company-flow")
@@ -89,12 +88,19 @@
 (depends-on "go-mode")
 (depends-on "oceanic-theme")
 
-(depends-on "lsp-mode"
-            :git "https://github.com/emacs-lsp/lsp-mode.git"
-            :branch "master")
-(depends-on "lsp-ui"
-            :git "https://github.com/emacs-lsp/lsp-ui.git"
-            :branch "master")
-(depends-on "lsp-rust"
-            :git "https://github.com/emacs-lsp/lsp-rust.git"
-            :branch "master")
+(depends-on "lsp-mode")
+(depends-on "lsp-ui")
+(depends-on "helm-lsp")
+(depends-on "company-lsp")
+(depends-on "dap-mode")
+
+(depends-on "deadgrep")
+
+(depends-on "swift-mode")
+(depends-on "company-sourcekit")
+(depends-on "flycheck-swift")
+(depends-on "vue-mode")
+(depends-on "vue-html-mode")
+(depends-on "prettier-js")
+(depends-on "rustic")
+(depends-on "use-package")

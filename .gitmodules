@@ -1,0 +1,6 @@
+[submodule "use-package"]
+	path = use-package
+	url = git@github.com:jwiegley/use-package.git
+[submodule "vendor/auto-package-update.el"]
+	path = vendor/auto-package-update.el
+	url = git@github.com:rranelli/auto-package-update.el
