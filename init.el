@@ -3,12 +3,10 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+;(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 (setq package-archives
       '(("gnu" . "https://elpa.gnu.org/packages/")
-	("marmalade" . "https://marmalade-repo.org/packages/")
-	("melpa" . "https://melpa.org/packages/")
-	("melpa-stable" . "http://stable.melpa.org/packages/")))
+	("melpa" . "https://melpa.org/packages/")))
 
 ;; Make sure use-package is installed
 (unless (package-installed-p 'use-package)
@@ -53,6 +51,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(diff-added ((t (:inherit diff-changed :background "#22aa22"))))
  '(font-lock-comment-face ((t :slant italic))))
  '(font-lock-constant-face ((t (:weight normal))))
  '(js2-function-call ((t (:inherit default :foreground "magenta"))))
@@ -67,30 +66,33 @@
    ["#080808" "#d70000" "#67b11d" "#875f00" "#268bd2" "#af00df" "#00ffff" "#b2b2b2"])
  '(coffee-tab-width 2)
  '(css-indent-offset 2)
- '(custom-enabled-themes (quote (dracula)))
+ '(custom-enabled-themes '(dracula))
  '(custom-safe-themes
-   (quote
-    ("8d805143f2c71cfad5207155234089729bb742a1cb67b7f60357fdd952044315" "12bacee81d067acf07dec4c867be541a04744a6ac6a39636de25a2c77e9b573c" "aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" "a4df5d4a4c343b2712a8ed16bc1488807cd71b25e3108e648d4a26b02bc990b3" "4486ade2acbf630e78658cd6235a5c6801090c2694469a2a2b4b0e12227a64b9" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "5dc0ae2d193460de979a463b907b4b2c6d2c9c4657b2e9e66b8898d2592e3de5" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "d8f76414f8f2dcb045a37eb155bfaa2e1d17b6573ed43fb1d18b936febc7bbc2" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "d9129a8d924c4254607b5ded46350d68cc00b6e38c39fc137c3cfb7506702c12" "2837fa235c6a750ad719d9aaca292e000ff0e74a0de898b31c1140a6a6b150cd" "3b502f3ed0b63931c526795969d2653b59d8323f9e18f68683bfea0ddf47f378" default)))
+   '("6731049cee8f7cbd542d7b3e1c551f3fab716a92119bd7c77f0bd1ef20849fb8" "8d805143f2c71cfad5207155234089729bb742a1cb67b7f60357fdd952044315" "12bacee81d067acf07dec4c867be541a04744a6ac6a39636de25a2c77e9b573c" "aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" "a4df5d4a4c343b2712a8ed16bc1488807cd71b25e3108e648d4a26b02bc990b3" "4486ade2acbf630e78658cd6235a5c6801090c2694469a2a2b4b0e12227a64b9" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "5dc0ae2d193460de979a463b907b4b2c6d2c9c4657b2e9e66b8898d2592e3de5" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "d8f76414f8f2dcb045a37eb155bfaa2e1d17b6573ed43fb1d18b936febc7bbc2" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "d9129a8d924c4254607b5ded46350d68cc00b6e38c39fc137c3cfb7506702c12" "2837fa235c6a750ad719d9aaca292e000ff0e74a0de898b31c1140a6a6b150cd" "3b502f3ed0b63931c526795969d2653b59d8323f9e18f68683bfea0ddf47f378" default))
  '(fci-rule-color "#343d46")
  '(flycheck-javascript-flow-args nil)
- '(font-lock-global-modes (quote (not speedbar-mode)))
+ '(font-lock-global-modes '(not speedbar-mode))
  '(hl-sexp-background-color "#efebe9")
  '(js-indent-level 2 t)
  '(js2-basic-offset 2)
  '(js2-strict-inconsistent-return-warning nil)
  '(js2-strict-missing-semi-warning nil)
  '(json-reformat:indent-width 2)
- '(lsp-enable-file-watchers nil)
- '(lsp-rust-build-lib t)
- '(lsp-rust-cfg-test t)
- '(lsp-rust-unstable-features t)
+ '(lsp-rust-server 'rust-analyzer t)
+ '(lsp-ui-doc-border "white")
+ '(lsp-ui-doc-include-signature t)
+ '(lsp-ui-doc-position 'top)
+ '(lsp-ui-doc-use-childframe nil)
+ '(lsp-ui-doc-use-webkit t)
  '(package-selected-packages
-   (quote
-    (csharp-mode go-mode defpackage slime eshell-z esh-help esh-autosuggest forge magit smart-dash cargo rust-mode company-lsp company-quickhelp company rg helm-rg helm-mode helm lsp-helm helm-config yasnippet pbcopy smartparens flycheck lsp-ui lsp-mode rustic dracula-theme auto-package-update)))
+   '(opencl-mode python-mode spaceline-all-the-icons spaceline which-key magit-delta magit-delta-mode deadgreap string-inflection rust-mode lv chess yaml-mode deadgrep color-rg exec-path-from-shell csharp-mode go-mode defpackage slime eshell-z esh-help esh-autosuggest forge magit smart-dash company-lsp company-quickhelp company rg helm-rg helm-mode helm lsp-helm helm-config yasnippet pbcopy smartparens flycheck lsp-ui lsp-mode dracula-theme auto-package-update))
+ '(safe-local-variable-values
+   '((eval progn
+           (c-set-offset 'innamespace '0)
+           (c-set-offset 'inline-open '0))))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
-   (quote
-    ((20 . "#bf616a")
+   '((20 . "#bf616a")
      (40 . "#DCA432")
      (60 . "#ebcb8b")
      (80 . "#B4EB89")
@@ -107,7 +109,7 @@
      (300 . "#bf616a")
      (320 . "#DCA432")
      (340 . "#ebcb8b")
-     (360 . "#B4EB89"))))
+     (360 . "#B4EB89")))
  '(vc-annotate-very-old-color nil))
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)

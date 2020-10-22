@@ -5,3 +5,13 @@ auto-save-list
 ac-comphist.dat
 projectile.cache
 projectile-bookmarks.eld
+.cache
+.lsp-session-v1
+transient
+tramp
+eln-cache
+eshell
+network-security.data
+recentf
+.last-package-update-day
+forge-database.sqlite

@@ -18,31 +18,31 @@
     (add-hook 'before-save-hook 'gofmt-before-save)
     (add-to-list 'exec-path "~/.go/bin")
     ;; Customize compile command to run go build
-    (if (not (string-match "go" compile-command))
-        (set (make-local-variable 'compile-command)
-             "go build -v && go vet"))
+    ;(if (not (string-match "go" compile-command))
+    ;    (set (make-local-variable 'compile-command)
+    ;         "go build -v && go vet"))
     ;; This proved to be too slow in big projects:
     ;; && go test -short -coverprofile cover.out && go tool cover -func cover.out
 
-    (local-set-key (kbd "C-c C-c") 'compile)
-    (local-set-key (kbd "C-c C-g") 'go-goto-imports)
+    ;(local-set-key (kbd "C-c C-c") 'compile)
+    ;(local-set-key (kbd "C-c C-g") 'go-goto-imports)
     (local-set-key (kbd "C-c C-k") 'godoc)
     ;; github.com/kisielk/errcheck
-    (local-set-key (kbd "C-c C-e") 'go-errcheck)
-    (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
+    ;(local-set-key (kbd "C-c C-e") 'go-errcheck)
+    ;(local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
     ;; Godef jump key binding
     ;; code.google.com/p/rog-go/exp/cmd/godef
-    (local-set-key (kbd "M-\"") 'godef-jump)
+    ;(local-set-key (kbd "M-\"") 'godef-jump)
     ;; use company-go in go-mode
-    (set (make-local-variable 'company-backends) '(company-go))
-    (company-mode)
+    ;(set (make-local-variable 'company-backends) '(company-go))
+    ;(company-mode)
 
 
   ;; Ensure all linting passes, then use 'go build' to compile, then test/vet
-  (defun setup-go-mode-compile ()
-    (if (not (string-match "go" compile-command))
-        (set (make-local-variable 'compile-command)
-             "gometalinter.v1 --deadline 10s && go build -v && go test -v && go vet")))
+  ;; (defun setup-go-mode-compile ()
+  ;;   (if (not (string-match "go" compile-command))
+  ;;       (set (make-local-variable 'compile-command)
+  ;;            "gometalinter.v1 --deadline 10s && go build -v && go test -v && go vet")))
 
     ;; set helm-dash documentation
   (defun go-doc ()
@@ -50,37 +50,37 @@
     (setq-local helm-dash-docsets '("Go")))
 
   (add-hook 'go-mode-hook 'company-mode)
-  (add-hook 'go-mode-hook 'go-eldoc-setup)
+  ;(add-hook 'go-mode-hook 'go-eldoc-setup)
   (add-hook 'go-mode-hook 'highlight-word-hook)
-  (add-to-list 'load-path (concat (getenv "GOPATH")
-                                  "/src/github.com/golang/lint/misc/emacs"))
-  (require 'golint)
-  (add-hook 'go-mode-hook 'my-go-mode-hook)
+  ; (add-to-list 'load-path (concat (getenv "GOPATH")
+  ;                                 "/src/github.com/golang/lint/misc/emacs"))
+  ;(require 'golint)
+  ;(add-hook 'go-mode-hook 'my-go-mode-hook)
   (add-hook 'go-mode-hook 'go-doc)
-  (add-hook 'go-mode-hook 'setup-go-mode-compile)
+  ;(add-hook 'go-mode-hook 'setup-go-mode-compile)
 
-  (require 'go-guru)
-  (add-hook 'go-mode-hook #'go-guru-hl-identifier-mode)
+  ;(require 'go-guru)
+  ;(add-hook 'go-mode-hook #'go-guru-hl-identifier-mode)
   )
 
-(eval-after-load 'go-mode
-  '(substitute-key-definition 'go-import-add 'helm-go-package go-mode-map))
+;; (eval-after-load 'go-mode
+;;   '(substitute-key-definition 'go-import-add 'helm-go-package go-mode-map))
 
-;; Completion integration
-(use-package company-go
-  :ensure t
-  :after go
-  :config
-  (setq tab-width 4)
+;; ;; Completion integration
+;; (use-package company-go
+;;   :ensure t
+;;   :after go
+;;   :config
+;;   (setq tab-width 4)
 
-  :bind (:map go-mode-map
-              ("M-." . godef-jump)))
+;;   :bind (:map go-mode-map
+;;               ("M-." . godef-jump)))
 
-;; ElDoc integration
-(use-package go-eldoc
-  :ensure t
-  :config
-  (add-hook 'go-mode-hook 'go-eldoc-setup))
+;; ;; ElDoc integration
+;; (use-package go-eldoc
+;;   :ensure t
+;;   :config
+;;   (add-hook 'go-mode-hook 'go-eldoc-setup))
 
 ;; (defun set-exec-path-from-shell-PATH ()
 ;;   (let ((path-from-shell (replace-regexp-in-string

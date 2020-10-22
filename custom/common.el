@@ -34,7 +34,7 @@
 (setq less-css-indent-level 2)
 
 ;; Delete trailing whitespace on save
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(remove-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Show line-number in the mode line
 (line-number-mode 1)
@@ -81,7 +81,7 @@
 ; (autoload 'dirtree "dirtree" "Add directory to tree view" t)
 
 ;; yasnippet
-(use-package yasnippet)
+; (use-package yasnippet)
 ;; should be loaded before auto complete so that they can work together
 ;(yas-global-mode 1)
 
@@ -135,10 +135,13 @@
 
 ; (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 
-(use-package rg
-  :config
-  (rg-enable-default-bindings))
+;; (use-package rg
+;;   :config
+;;   (rg-enable-default-bindings))
 
+
+(use-package helm-rg)
+(use-package deadgreap)
 
 ;; smart-dash: underscores without having to press shift modifier for dash key
 (use-package smart-dash
@@ -149,6 +152,9 @@
 (use-package magit
   :bind
   ("C-x g" . magit-status))
+
+(use-package xterm-color)
+(use-package magit-delta)
 
 (use-package forge
   :after magit)
@@ -247,3 +253,13 @@
 ;;   ;; (add-to-list 'slime-contribs 'slime-repl)
 ;;   )
 ;;  
+
+(use-package opencl-mode)
+
+(use-package spaceline
+  :config
+  (require 'spaceline-config)
+  (setq powerline-default-separator 'utf-8)
+  (spaceline-spacemacs-theme)
+)
+
