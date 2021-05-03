@@ -4,9 +4,9 @@
   :ensure t
   :init
   :config
-  (use-package go-errcheck
-    :ensure t
-    )
+  ;; (use-package go-errcheck
+  ;;   :ensure t
+  ;;   )
   (setenv "GO111MODULE" "on")
   (setenv "GOROOT" (shell-command-to-string ". /etc/zshrc; echo -n $GOROOT"))
   (setenv "GOPATH" (shell-command-to-string ". /etc/zshrc; echo -n $GOPATH")))

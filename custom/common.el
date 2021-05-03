@@ -55,6 +55,7 @@
 ;;                (sp-local-pair "<" ">")
 ;;                (sp-local-pair "<%" "%>"))
 
+(use-package deadgrep)
 
 ;; Organizational
 
@@ -140,7 +141,7 @@
 ;;   (rg-enable-default-bindings))
 
 
-(use-package helm-rg)
+;(use-package helm-rg)
 (use-package deadgreap)
 
 ;; smart-dash: underscores without having to press shift modifier for dash key

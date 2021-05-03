@@ -57,11 +57,11 @@
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
   )
 
-(use-package helm-lsp
-  :commands helm-lsp-workspace-symbol
-  :config
-  (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
-  )
+;; (use-package helm-lsp
+;;   :commands helm-lsp-workspace-symbol
+;;   :config
+;;   (define-key lsp-mode-map [remap xref-find-apropos] #'helm-lsp-workspace-symbol)
+;;   )
 
 (use-package company-lsp
   :commands company-lsp)
