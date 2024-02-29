@@ -34,7 +34,6 @@
   (setq major-mode-remap-alist
         '((yaml-mode . yaml-ts-mode)
           (bash-mode . bash-ts-mode)
-          (rust-mode . rust-ts-mode)
           (js2-mode . js-ts-mode)
 	  (toml-mode . toml-ts-mode)
           (typescript-mode . typescript-ts-mode)
@@ -104,7 +103,7 @@
   ;; Sometimes you need to tell Eglot where to find the language server
   ; (add-to-list 'eglot-server-programs
   ;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
-  (add-hook 'before-save-hook 'eglot-format-buffer nil t)
+  (add-hook 'before-save-hook 'eglot-format-buffer -10 t)
   (setq eglot-autoshutdown t))
 
 
@@ -112,7 +111,7 @@
   :vc (:url "https://github.com/nemethf/eglot-x")
   :after eglot
   :config
-  (with-eval-after-load 'eglot (require 'eglot-x)))  
+  (with-eval-after-load 'eglot (require 'eglot-x)))
 
 ;; Tabs
 (setq tab-width 2)
@@ -143,3 +142,17 @@
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.sh$" . bash-mode))
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+
+(use-package rust-mode
+  :ensure t
+  :init
+  (setq rust-mode-treesitter-derive t)
+  :config
+  (setq rust-format-on-save t)
+)
+
+(use-package cargo
+  :ensure t
+  :hook
+  (rust-mode . cargo-minor-mode)
+  (rust-ts-mode . cargo-minor-mode))

@@ -230,10 +230,10 @@ If the new path's directories does not exist, create them."
      "603a831e0f2e466480cdc633ba37a0b1ae3c3e9a4e90183833bc4def3421a961"
      default))
  '(package-selected-packages
-   '(avy cape corfu-terminal dracula-theme eglot-x embark-consult
-         json-mode kind-icon magit marginalia markdown-mode orderless
-         smartparens spaceline-config vertico wgrep which-key
-         yaml-mode))
+   '(avy cape cargo cargo-mode corfu-terminal dracula-theme eglot-x
+         embark-consult json-mode kind-icon magit marginalia
+         markdown-mode orderless rust-mode smartparens
+         spaceline-config vertico wgrep which-key yaml-mode))
  '(package-vc-selected-packages '((eglot-x :url "https://github.com/nemethf/eglot-x"))))
 ;; (custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.
@@ -279,4 +279,21 @@ If the new path's directories does not exist, create them."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(corfu-current ((t (:background "lightslategray" :foreground "black"))))
+ '(corfu-default ((t (:background "slategray4"))))
+ '(cursor ((t (:background "slategray"))))
+ '(diff-changed-unspecified ((t (:inherit diff-changed :extend t :background "#44475a"))))
+ '(diff-file-header ((t (:extend t :background "#44475a" :weight bold))))
+ '(diff-header ((t (:extend t :background "slategray"))))
+ '(diff-refine-changed ((t (:background "slategray"))))
+ '(font-lock-builtin-face ((t (:background "#f8f8f2" :foreground "#282a36" :slant italic :weight bold))))
+ '(font-lock-doc-face ((t (:background "#6272a4" :foreground "#282a36" :slant italic))))
+ '(marginalia-true ((t (:inherit font-lock-builtin-face))))
+ '(message-separator ((t (:background "#f8f8f2" :foreground "#44475a" :slant italic))))
+ '(smerge-base ((t (:extend t :background "#44475a" :foreground "#f1fa8c"))))
+ '(smerge-lower ((t (:extend t :background "#44475a"))))
+ '(smerge-markers ((t (:extend t :background "#6272a4"))))
+ '(smerge-refined-added ((t (:inherit smerge-refined-change :background "#44475a" :foreground "#50fa7b"))))
+ '(smerge-refined-removed ((t (:inherit smerge-refined-change :background "#44475a" :foreground "#ff5555"))))
+ '(smerge-upper ((t (:extend t :background "#44475a" :foreground "#ff79c6"))))
+ '(widget-field ((t (:extend t :background "#6272a4" :foreground "black")))))

@@ -48,7 +48,6 @@
          ;; Searching
          ("M-s r" . consult-ripgrep)
          ("M-s l" . consult-line)       ; Alternative: rebind C-s to use
-         ("C-s" . consult-line)       ; consult-line instead of isearch, bind
          ("M-s L" . consult-line-multi) ; isearch to M-s s
          ("M-s o" . consult-outline)
          ;; Isearch integration
@@ -118,7 +117,15 @@
   (:map corfu-map
         ("SPC" . corfu-insert-separator)
         ("C-n" . corfu-next)
-        ("C-p" . corfu-previous)))
+        ("C-p" . corfu-previous))
+  :config
+  ;; Specify explicitly to use Orderless for Eglot
+  (setq completion-category-overrides '((eglot (styles orderless))
+                                        (eglot-capf (styles orderless))))
+
+   ;; Enable cache busting, depending on if your server returns
+   ;; sufficiently many candidates in the first place.
+   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster))
 
 ;; Part of corfu
 (use-package corfu-popupinfo
@@ -166,6 +173,7 @@
   :ensure t
   :config
   (setq completion-styles '(orderless)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;
