@@ -92,7 +92,7 @@
 
   ;; Configure hooks to automatically turn-on eglot for selected modes
   :hook
-  (((python-ts-mode ruby-ts-mode elixir-ts-mode rust-ts-mode typescript-ts-mode js2-ts-mode rust-ts-mode tsx-ts-mode) . eglot-ensure))
+  (((python-ts-mode ruby-ts-mode elixir-ts-mode rust-mode typescript-ts-mode js2-ts-mode rust-ts-mode tsx-ts-mode) . eglot-ensure))
 
   :custom
   (eglot-send-changes-idle-time 0.1)
@@ -100,10 +100,22 @@
 
   :config
   (fset #'jsonrpc--log-event #'ignore)  ; massive perf boost---don't log every event
+  (add-to-list 'eglot-server-programs
+               `(rust-mode . ("rust-analyzer" :initializationOptions
+                              ( :procMacro (:enable t)
+                                :cargo ( :buildScripts (:enable t)
+                                         :features "all"
+                                         :targetDir t)
+                                :imports ( :granularity (:group "module"))))))
+
   ;; Sometimes you need to tell Eglot where to find the language server
   ; (add-to-list 'eglot-server-programs
   ;              '(haskell-mode . ("haskell-language-server-wrapper" "--lsp")))
-  (add-hook 'before-save-hook 'eglot-format-buffer -10 t)
+  (add-hook 'before-save-hook (lambda ()
+                                (when (eglot-managed-p)
+                                  (eglot-format-buffer)))
+            nil t)
+  ;; (add-hook 'before-save-hook 'eglot-format-buffer -10 t)
   (setq eglot-autoshutdown t))
 
 

@@ -230,7 +230,7 @@ If the new path's directories does not exist, create them."
      "603a831e0f2e466480cdc633ba37a0b1ae3c3e9a4e90183833bc4def3421a961"
      default))
  '(package-selected-packages
-   '(avy cape cargo cargo-mode corfu-terminal dracula-theme eglot-x
+   '(avy cape cargo cargo-mode corfu-terminal dracula-theme eglot eglot-x
          embark-consult json-mode kind-icon magit marginalia
          markdown-mode orderless rust-mode smartparens
          spaceline-config vertico wgrep which-key yaml-mode))
