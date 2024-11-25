@@ -230,10 +230,12 @@ If the new path's directories does not exist, create them."
      "603a831e0f2e466480cdc633ba37a0b1ae3c3e9a4e90183833bc4def3421a961"
      default))
  '(package-selected-packages
-   '(avy cape cargo cargo-mode corfu-terminal dracula-theme eglot eglot-x
-         embark-consult json-mode kind-icon magit marginalia
-         markdown-mode orderless rust-mode smartparens
-         spaceline-config vertico wgrep which-key yaml-mode))
+   '(avy cape cargo cargo-mode corfu-terminal deadgrep dracula-theme
+         eglot eglot-x embark-consult json-mode kind-icon kotlin-mode
+         magit marginalia markdown-mode orderless protobuf-mode
+         protobuf-ts-mode rust-mode smartparens spaceline-config
+         string-inflection swift-mode vertico wgrep which-key
+         yaml-mode))
  '(package-vc-selected-packages '((eglot-x :url "https://github.com/nemethf/eglot-x"))))
 ;; (custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.
