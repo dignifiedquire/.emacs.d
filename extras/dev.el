@@ -41,6 +41,8 @@
           (json-mode . json-ts-mode)
           (css-mode . css-ts-mode)
           (dockerfile-mode . dockerfile-ts-mode)
+          (lua-mode . lua-ts-mode)
+          (kotlin-mode . kotlin-ts-mode)
           (python-mode . python-ts-mode)))
   :hook
   ;; Auto parenthesis matching
@@ -73,6 +75,11 @@
 (use-package json-mode
   :ensure t)
 
+(use-package kotlin-mode
+  :ensure t)
+(use-package kotlin-ts-mode
+  :ensure t)
+
 ;; Emacs ships with a lot of popular programming language modes. If it's not
 ;; built in, you're almost certain to find a mode for the language you're
 ;; looking for with a quick Internet search.
@@ -92,7 +99,7 @@
 
   ;; Configure hooks to automatically turn-on eglot for selected modes
   :hook
-  (((python-ts-mode ruby-ts-mode elixir-ts-mode rust-mode typescript-ts-mode js2-ts-mode rust-ts-mode tsx-ts-mode) . eglot-ensure))
+  (((python-ts-mode ruby-ts-mode elixir-ts-mode rust-mode typescript-ts-mode js2-ts-mode rust-ts-mode tsx-ts-mode lua-ts-mode) . eglot-ensure))
 
   :custom
   (eglot-send-changes-idle-time 0.1)
@@ -147,13 +154,17 @@
 (add-to-list 'auto-mode-alist '("\\.ts?$" . typescript-mode))
 (add-to-list 'auto-mode-alist '("\\.tsx$" . tsx-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx?$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.mjs$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 (add-to-list 'auto-mode-alist '("\\.py$" . python-mode))
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 (add-to-list 'auto-mode-alist '("\\.rs$" . rust-mode))
 (add-to-list 'auto-mode-alist '("\\.toml$" . toml-mode))
 (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 (add-to-list 'auto-mode-alist '("\\.sh$" . bash-mode))
 (add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.kts$" . kotlin-mode))
+(add-to-list 'auto-mode-alist '("\\.kt$" . kotlin-mode))
 
 (use-package rust-mode
   :ensure t

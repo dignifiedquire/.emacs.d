@@ -100,6 +100,15 @@ If the new path's directories does not exist, create them."
 
 (keymap-set minibuffer-mode-map "TAB" 'minibuffer-complete) ; TAB acts more like how it does in the shell
 
+(use-package kkp
+  :ensure t
+  :config
+
+  (setq kkp-alt-modifier 'alt) ;; use this if you want to map the Alt keyboard modifier to Alt in Emacs (and not to Meta)
+  (setq kkp-super-modifier 'meta) ;; use super (aka CMD) as Meta
+  (global-kkp-mode +1))
+
+
 ;; For a fancier built-in completion option, try ido-mode,
 ;; icomplete-vertical, or fido-mode. See also the file extras/base.el
 
@@ -178,11 +187,11 @@ If the new path's directories does not exist, create them."
   (load-theme 'dracula))
 
 ;; default font
-(let ((font "Operator Mono Light 18"))
+(let ((font "OperatorMono Nerd Font Light 18"))
   (set-frame-font font)
   (add-to-list 'default-frame-alist
                `(font . ,font)))
-(set-face-attribute 'default nil :family "Operator Mono")
+(set-face-attribute 'default nil :family "OperatorMono Nerd Font")
 
 (use-package spaceline
   :ensure t
@@ -226,16 +235,17 @@ If the new path's directories does not exist, create them."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("3b502f3ed0b63931c526795969d2653b59d8323f9e18f68683bfea0ddf47f378"
+   '("1114c56feb07fb44ad12ede602c566a1387aeffcf5990a446952d54fba620be3"
+     "3b502f3ed0b63931c526795969d2653b59d8323f9e18f68683bfea0ddf47f378"
      "603a831e0f2e466480cdc633ba37a0b1ae3c3e9a4e90183833bc4def3421a961"
      default))
  '(package-selected-packages
    '(avy cape cargo cargo-mode corfu-terminal deadgrep dracula-theme
          eglot eglot-x embark-consult json-mode kind-icon kotlin-mode
-         magit marginalia markdown-mode orderless protobuf-mode
-         protobuf-ts-mode rust-mode smartparens spaceline-config
-         string-inflection swift-mode vertico wgrep which-key
-         yaml-mode))
+         kotlin-ts-mode magit marginalia markdown-mode orderless
+         protobuf-mode protobuf-ts-mode rust-mode smartparens
+         spaceline-config string-inflection swift-mode vertico wgrep
+         which-key yaml-mode))
  '(package-vc-selected-packages '((eglot-x :url "https://github.com/nemethf/eglot-x"))))
 ;; (custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.
